@@ -4,7 +4,6 @@ function calculator() {
     var skills = document.getElementsByClassName('skills');
     var ages = document.getElementsByClassName('ages');
     var gossips = document.getElementsByClassName('gossips');
-    var output = document.getElementById('output');
     var btnShow = document.querySelector("button");
     var sum = 500;
     sum *= education.value;
@@ -15,16 +14,18 @@ function calculator() {
         }
     }
     for (i = 0; i < 3; i++) {
-        if (gossips.checked === true) {
-            if (gossips.value !== "200") {
-                sum *= Number(gossips.value);
+        if (gossips[i].checked === true) {
+            if (gossips[i].value !== "200") {
+                sum *= Number(gossips[i].value);
             } else {
-                sum -= Number(gossips.value);
+                sum -= Number(gossips[i].value);
             }
         }
-        if (ages.checked === true) {
-            sum *= Number(ages.value);
+    }
+    for (i = 0; i < 3; i++) {
+        if (ages[i].checked === true) {
+            sum *= Number(ages[i].value);
         }
     }
-    output.innerText = sum + "$";
+    alert("Total: " + sum + "$")
 };
